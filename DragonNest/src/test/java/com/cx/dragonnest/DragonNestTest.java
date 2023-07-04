@@ -3,12 +3,23 @@ package com.cx.dragonnest;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.cx.dragonnest.entity.InfoNbrUser;
 import com.cx.dragonnest.service.InfoNbrUserService;
+import org.flowable.engine.*;
+import org.flowable.engine.history.HistoricActivityInstance;
+import org.flowable.engine.impl.cfg.StandaloneProcessEngineConfiguration;
+import org.flowable.engine.repository.Deployment;
+import org.flowable.engine.repository.ProcessDefinition;
+import org.flowable.engine.runtime.ProcessInstance;
+import org.flowable.idm.api.GroupQuery;
+import org.flowable.idm.engine.impl.persistence.entity.GroupEntityImpl;
+import org.flowable.task.api.Task;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author chenxin
@@ -82,5 +93,72 @@ public class DragonNestTest {
 		// 3. 编写sql语句，id对应接口方法，返回值对应实体类或者其他数据类型
 		//4，服务层调用该接口方法即可实现对应功能。
 		System.out.println(infoNbrUserService.queryAllInfoNbrUser());
+	}
+	@Test
+	void testFlowable(){
+		ProcessEngineConfiguration cfg = new StandaloneProcessEngineConfiguration()
+				.setJdbcUrl("jdbc:mysql://localhost:3306/flowableTest?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8")
+				.setJdbcUsername("root")
+				.setJdbcPassword("123456")
+				.setJdbcDriver("com.mysql.cj.jdbc.Driver")
+				.setDatabaseSchemaUpdate(ProcessEngineConfiguration.DB_SCHEMA_UPDATE_TRUE);
+		ProcessEngine processEngine = cfg.buildProcessEngine();
+//        将流程部署到flowable引擎中
+//		RepositoryService repositoryService = processEngine.getRepositoryService();
+//		Deployment deployment = repositoryService.createDeployment().addClasspathResource("holiday-new-request.bpmn20.xml").deploy();
+//		System.out.println("deployment id" +deployment.getId());
+//		//获取部署后的flowable引擎中的对象
+//		ProcessDefinition processDefinition = repositoryService.createProcessDefinitionQuery().deploymentId(deployment.getId()).singleResult();
+//		System.out.println("Found process definition : " + processDefinition.getName());
+//		System.out.println("Found process definition : " + processDefinition.getId());
+//		System.out.println("Found process definition : " + processDefinition.getDeploymentId());
+//		System.out.println("Found process definition : " + processDefinition.getVersion());
+//		//启动一个流程
+//		RuntimeService runtimeService = processEngine.getRuntimeService();
+//		HashMap<String,Object> variables=new HashMap<>();
+//		variables.put("employee", "cx");
+//		variables.put("nrOfHolidays",3);
+//		variables.put("description","请假");
+//		ProcessInstance holidayRequest = runtimeService.startProcessInstanceByKey("holidayRequest2", variables);
+//		System.out.println("startTime   "+holidayRequest.getName()+"----"+holidayRequest.getProcessDefinitionId()+"----"+holidayRequest.getStartTime());
+//		//获取某个对象的任务
+//		TaskService taskService = processEngine.getTaskService();
+//		List<Task> tasks = taskService.createTaskQuery().taskCandidateGroup("managers").list();
+//		System.out.println("Yours have " + tasks.size() + " tasks:");
+//		List<Task> list = taskService.createTaskQuery().list();
+//		System.out.println("Yours have " + list.size() + " tasks:");
+//		for (int i=0; i<tasks.size(); i++) {
+//			list.get(i).setAssignee("cx");
+//			System.out.println((i+1) + ") " + tasks.get(i).getName());
+//		}
+//		Task task = tasks.get(3);
+//		Map<String, Object> processVariables = taskService.getVariables(task.getId());
+//		System.out.println(processVariables.get("employee") + " wants " +
+//				processVariables.get("nrOfHolidays") + " of holidays. Do you approve this?");
+//		Map<String, Object> variables2 = new HashMap<String, Object>();
+//		variables2.put("approved", true);
+//		taskService.complete(task.getId(), variables2);
+//		HistoryService historyService = processEngine.getHistoryService();
+//		List<HistoricActivityInstance> activities =
+//				historyService.createHistoricActivityInstanceQuery()
+//						.processInstanceId(holidayRequest.getId())
+//						.finished()
+//						.orderByHistoricActivityInstanceEndTime().asc()
+//						.list();
+//
+//		for (HistoricActivityInstance activity : activities) {
+//			System.out.println(activity.getActivityId() + " took "
+//					+ activity.getDurationInMillis() + " milliseconds");
+//		}
+
+		IdentityService identityService=processEngine.getIdentityService();
+		GroupQuery lesder = identityService.createGroupQuery().groupId("lesder");
+		GroupEntityImpl g = new GroupEntityImpl();
+		g.setName("组长");
+		g.setId("leader");
+		g.setType("0");
+//		identityService.saveGroup(g);
+//		identityService.createMembership("cx","leader");
+//		identityService.createMembership("gt","leader");
 	}
 }

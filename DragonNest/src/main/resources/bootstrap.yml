@@ -6,12 +6,12 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
-    druid:
-      url: jdbc:mysql://localhost:3306/flowableTest?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
-      username: root
-      password: 123456
+    url: jdbc:mysql://localhost:3306/flowableTest?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
     ########## 连接池 配置 ##########
       # 配置初始化大小、最小、最大
+    druid:
       initial-size: 5
       minIdle: 10
       max-active: 20
@@ -39,7 +39,7 @@ spring:
       # 连接池中的minIdle数量以内的连接，空闲时间超过minEvictableIdleTimeMillis，则会执行keepAlive操作
       keepAlive: true
       # Spring 监控，利用aop 对指定接口的执行时间，jdbc数进行记录
-      aop-patterns: "com.springboot.template.dao.*"
+      aop-patterns: com.springboot.template.dao.*
       ########### 启用内置过滤器（第一个 stat必须，否则监控不到SQL）##########
       filters: stat,wall,log4j2
       # 自己配置监控统计拦截的filter

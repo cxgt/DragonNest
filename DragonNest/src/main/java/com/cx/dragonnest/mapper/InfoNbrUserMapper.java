@@ -5,6 +5,6 @@ import com.cx.dragonnest.entity.InfoNbrUser;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface InfoNbrUserDao extends BaseMapper<InfoNbrUser> {
+public interface InfoNbrUserMapper extends BaseMapper<InfoNbrUser> {
 	InfoNbrUser queryInfoNbrUser(String userId);
 }

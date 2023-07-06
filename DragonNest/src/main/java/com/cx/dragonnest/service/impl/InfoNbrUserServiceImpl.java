@@ -1,13 +1,16 @@
 package com.cx.dragonnest.service.impl;
 
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.alibaba.fastjson2.JSONObject;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cx.dragonnest.entity.InfoNbrUser;
-import com.cx.dragonnest.mapper.InfoNbrUserDao;
+import com.cx.dragonnest.mapper.InfoNbrUserMapper;
 import com.cx.dragonnest.service.InfoNbrUserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,11 +18,21 @@ import java.util.List;
  * @date 2023/06/30 10:57
  */
 @Service
-public class InfoNbrUserServiceImpl extends ServiceImpl<InfoNbrUserDao,InfoNbrUser> implements InfoNbrUserService {
+public class InfoNbrUserServiceImpl extends ServiceImpl<InfoNbrUserMapper,InfoNbrUser> implements InfoNbrUserService {
+	private final Logger logger= LoggerFactory.getLogger(InfoNbrUserServiceImpl.class);
+
 	@Autowired
-	InfoNbrUserDao infoNbrUserDao;
+	InfoNbrUserMapper infoNbrUserMapper;
 	@Override
 	public List<InfoNbrUser> queryAllInfoNbrUser() {
-		return null;
+		List<InfoNbrUser> infoNbrUserList=new ArrayList<>();
+		//DEBUG 、INFO、WARN、ERROR
+		logger.debug("debug msg={}","debug日志输出");
+		logger.info("info msg={}","info日志输出");
+		logger.warn("warn msg={}","warn日志输出");
+		logger.error("error msg={}","error日志输出");
+		infoNbrUserList.add(infoNbrUserMapper.queryInfoNbrUser("1231233"));
+		logger.error("error msg={} 内容={}","error日志输出", JSONObject.toJSONString(infoNbrUserList));
+		return infoNbrUserList;
 	}
 }

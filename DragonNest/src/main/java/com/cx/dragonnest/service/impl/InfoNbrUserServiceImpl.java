@@ -8,6 +8,7 @@ import com.cx.dragonnest.service.InfoNbrUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -24,7 +25,8 @@ public class InfoNbrUserServiceImpl extends ServiceImpl<InfoNbrUserMapper,InfoNb
 	@Autowired
 	InfoNbrUserMapper infoNbrUserMapper;
 	@Override
-	public List<InfoNbrUser> queryAllInfoNbrUser() {
+	@Cacheable(value = "info_nbr_user_service",key = "'query_all_info_nbr_user'+ #userId")
+	public List<InfoNbrUser> queryAllInfoNbrUser(String userId) {
 		List<InfoNbrUser> infoNbrUserList=new ArrayList<>();
 		//DEBUG 、INFO、WARN、ERROR
 		logger.debug("debug msg={}","debug日志输出");

@@ -11,5 +11,5 @@ import java.util.List;
  * @date 2023/06/30 10:57
  */
 public interface InfoNbrUserService extends IService<InfoNbrUser> {
-	List<InfoNbrUser> queryAllInfoNbrUser();
+	List<InfoNbrUser> queryAllInfoNbrUser(String userId);
 }

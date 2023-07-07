@@ -23,7 +23,7 @@ public class UserController {
 	InfoNbrUserService infoNbrUserService;
 	@GetMapping(value = "/getUserData")
 	public JsonResult getUserData(@RequestParam String userId){
-		List<InfoNbrUser> infoNbrUserList = infoNbrUserService.queryAllInfoNbrUser();
+		List<InfoNbrUser> infoNbrUserList = infoNbrUserService.queryAllInfoNbrUser(userId);
 		return JsonResult.success(infoNbrUserList);
 	}
 }

@@ -1,7 +1,9 @@
 #spring基础配置
 spring:
+  application:
+    name: DragonNest
   profiles:
-    active: @profileActive@
+    active: dev
     #spring_datasource_info
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -75,6 +77,16 @@ spring:
         login-password: 123
         allow: 127.0.0.1           # 允许访问的地址，如果allow没有配置或者为空，则允许所有访问
         deny:                                        # 拒绝访问的地址，deny优先于allow，如果在deny列表中，就算在allow列表中，也会被拒绝
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 10.11.24.98:8848
+        username: nacos
+        password: A`SUVl9RJN2=nO,e
+        config:
+          enabled: false
+
 #Mybatis-plus
 mybatis-plus:
   configuration:
@@ -86,3 +98,11 @@ mybatis-plus:
     db-config:
 #      全局默认主键类型。
       id-type: auto
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 15000
+        readTimeout: 60000
+#  hystrix:
+#    enabled: true

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cx.dragonnest.mapper.InsoSysManageMapper">
+
+    <resultMap type="com.cx.dragonnest.entity.InsoSysManage" id="InsoSysManageResult">
+        <result property="systemId"    column="SYSTEM_ID"    />
+        <result property="systemCode"    column="SYSTEM_CODE"    />
+        <result property="systemName"    column="SYSTEM_NAME"    />
+        <result property="systemDetail"    column="SYSTEM_DETAIL"    />
+        <result property="onlineTime"    column="ONLINE_TIME"    />
+        <result property="validFlag"    column="VALID_FLAG"    />
+        <result property="belongLand"    column="BELONG_LAND"    />
+        <result property="systemType"    column="SYSTEM_TYPE"    />
+        <result property="supportFactory"    column="SUPPORT_FACTORY"    />
+        <result property="systemManager"    column="SYSTEM_MANAGER"    />
+        <result property="documentGroup"    column="DOCUMENT_GROUP"    />
+        <result property="scoreRecordSystem"    column="SCORE_RECORD_SYSTEM"    />
+        <result property="scoreRecordTime"    column="SCORE_RECORD_TIME"    />
+        <result property="safeScanTime"    column="SAFE_SCAN_TIME"    />
+        <result property="safeCheckProgress"    column="SAFE_CHECK_PROGRESS"    />
+        <result property="coreSystem"    column="CORE_SYSTEM"    />
+        <result property="influenceScope"    column="INFLUENCE_SCOPE"    />
+        <result property="offlineTime"    column="OFFLINE_TIME"    />
+        <result property="systemCertificate"    column="SYSTEM_CERTIFICATE"    />
+        <result property="systemCertificateExpiryTime"    column="SYSTEM_CERTIFICATE_EXPIRY_TIME"    />
+    </resultMap>
+</mapper>

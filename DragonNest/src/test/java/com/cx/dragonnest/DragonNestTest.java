@@ -1,8 +1,11 @@
 package com.cx.dragonnest;
 
+import com.alibaba.fastjson2.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.cx.dragonnest.entity.InfoNbrUser;
+import com.cx.dragonnest.entity.InsoSysManage;
 import com.cx.dragonnest.service.InfoNbrUserService;
+import com.cx.dragonnest.service.InsoSysManageService;
 import org.flowable.engine.*;
 import org.flowable.engine.history.HistoricActivityInstance;
 import org.flowable.engine.impl.cfg.StandaloneProcessEngineConfiguration;
@@ -31,11 +34,14 @@ public class DragonNestTest {
 	// @Autowired(required=false)：表示忽略当前要注入的bean，如果有直接注入，没有跳过，不会报错
 //	@Autowired(required = false)
 //	private InfoNbrUserService infoNbrUserService;
+	@Autowired(required = false)
+	private InsoSysManageService insoSysManageService;
 //
-//	@Test
-//	void tryLog(){
-//		infoNbrUserService.queryAllInfoNbrUser();
-//	}
+	@Test
+	void tryLog(){
+		InsoSysManage insoSysManage = insoSysManageService.queryForInsoSysManage();
+		System.out.println(JSONObject.toJSONString(insoSysManage));
+	}
 //	@Test
 //		//添加数据
 ////	this.accNbr = accNbr;

@@ -3,8 +3,10 @@ package com.cx.dragonnest;
 import com.alibaba.fastjson2.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.cx.dragonnest.entity.InfoNbrUser;
+import com.cx.dragonnest.entity.InsoAssetInventory;
 import com.cx.dragonnest.entity.InsoSysManage;
 import com.cx.dragonnest.service.InfoNbrUserService;
+import com.cx.dragonnest.service.InsoAssetInventoryService;
 import com.cx.dragonnest.service.InsoSysManageService;
 import org.flowable.engine.*;
 import org.flowable.engine.history.HistoricActivityInstance;
@@ -36,11 +38,20 @@ public class DragonNestTest {
 //	private InfoNbrUserService infoNbrUserService;
 	@Autowired(required = false)
 	private InsoSysManageService insoSysManageService;
+
+	@Autowired(required = false)
+	private InsoAssetInventoryService insoAssetInventoryService;
 //
 	@Test
 	void tryLog(){
 		InsoSysManage insoSysManage = insoSysManageService.queryForInsoSysManage();
 		System.out.println(JSONObject.toJSONString(insoSysManage));
+	}
+
+	@Test
+	void testService(){
+		InsoAssetInventory insoAssetInventory = insoAssetInventoryService.selectOneAsset("3");
+		System.out.println(JSONObject.toJSONString(insoAssetInventory));
 	}
 //	@Test
 //		//添加数据

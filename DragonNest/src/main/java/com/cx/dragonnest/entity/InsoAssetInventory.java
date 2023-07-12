@@ -119,7 +119,7 @@ public class InsoAssetInventory implements Serializable {
 	/**
 	 * 直接负责人邮箱
 	 */
-	private String directlyResponsibleEmailAddressvarchar;
+	private String directlyResponsibleEmailAddress;
 
 	/**
 	 * 管理负责人部门
@@ -170,6 +170,8 @@ public class InsoAssetInventory implements Serializable {
 	 * 物理位置
 	 */
 	private String physicalLocation;
+
+	private String systemCode;
 
 	public Integer getAssetId() {
 		return assetId;
@@ -331,12 +333,12 @@ public class InsoAssetInventory implements Serializable {
 		this.directlyResponsiblePhone = directlyResponsiblePhone;
 	}
 
-	public String getDirectlyResponsibleEmailAddressvarchar() {
-		return directlyResponsibleEmailAddressvarchar;
+	public String getDirectlyResponsibleEmailAddress() {
+		return directlyResponsibleEmailAddress;
 	}
 
-	public void setDirectlyResponsibleEmailAddressvarchar(String directlyResponsibleEmailAddressvarchar) {
-		this.directlyResponsibleEmailAddressvarchar = directlyResponsibleEmailAddressvarchar;
+	public void setDirectlyResponsibleEmailAddress(String directlyResponsibleEmailAddress) {
+		this.directlyResponsibleEmailAddress = directlyResponsibleEmailAddress;
 	}
 
 	public String getManageTheDepartment() {
@@ -417,5 +419,13 @@ public class InsoAssetInventory implements Serializable {
 
 	public void setPhysicalLocation(String physicalLocation) {
 		this.physicalLocation = physicalLocation;
+	}
+
+	public String getSystemCode() {
+		return systemCode;
+	}
+
+	public void setSystemCode(String systemCode) {
+		this.systemCode = systemCode;
 	}
 }

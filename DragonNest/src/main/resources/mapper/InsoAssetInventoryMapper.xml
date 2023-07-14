@@ -3,6 +3,337 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cx.dragonnest.mapper.InsoAssetInventoryMapper">
+    <resultMap id="BaseResultMap" type="com.cx.dragonnest.entity.InsoAssetInventory" >
+        <result column="asset_id" property="assetId" />
+        <result column="first_attribution" property="firstAttribution" />
+        <result column="secondary_secondary" property="secondarySecondary" />
+        <result column="third_secondary" property="thirdSecondary" />
+        <result column="application_system_name" property="applicationSystemName" />
+        <result column="network_unit" property="networkUnit" />
+        <result column="ip_address" property="ipAddress" />
+        <result column="asset_name" property="assetName" />
+        <result column="ip_type" property="ipType" />
+        <result column="asset_status" property="assetStatus" />
+        <result column="network_type" property="networkType" />
+        <result column="device_type" property="deviceType" />
+        <result column="device_notes" property="deviceNotes" />
+        <result column="ip_access_control" property="ipAccessControl" />
+        <result column="access_control_notes" property="accessControlNotes" />
+        <result column="label_name" property="labelName" />
+        <result column="asset_notes" property="assetNotes" />
+        <result column="directly_responsible_department" property="directlyResponsibleDepartment" />
+        <result column="directly_responsible" property="directlyResponsible" />
+        <result column="directly_responsible_phone" property="directlyResponsiblePhone" />
+        <result column="directly_responsible_email_address" property="directlyResponsibleEmailAddress" />
+        <result column="manage_the_department" property="manageTheDepartment" />
+        <result column="head_of_management" property="headOfManagement" />
+        <result column="manage_phone" property="managePhone" />
+        <result column="manage_email_address" property="manageEmailAddress" />
+        <result column="lead_departmen" property="leadDepartmen" />
+        <result column="head_of_leader" property="headOfLeader" />
+        <result column="leader_phone" property="leaderPhone" />
+        <result column="leader_email_address" property="leaderEmailAddress" />
+        <result column="physical_area" property="physicalArea" />
+        <result column="physical_location" property="physicalLocation" />
+        <result column="open_ports" property="openPorts" />
+        <result column="system_code" property="systemCode" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        asset_id,
+        first_attribution,
+        secondary_secondary,
+        third_secondary,
+        application_system_name,
+        network_unit,
+        ip_address,
+        asset_name,
+        ip_type,
+        asset_status,
+        network_type,
+        device_type,
+        device_notes,
+        ip_access_control,
+        access_control_notes,
+        label_name,
+        asset_notes,
+        directly_responsible_department,
+        directly_responsible,
+        directly_responsible_phone,
+        directly_responsible_email_address,
+        manage_the_department,
+        head_of_management,
+        manage_phone,
+        manage_email_address,
+        lead_departmen,
+        head_of_leader,
+        leader_phone,
+        leader_email_address,
+        physical_area,
+        physical_location,
+        open_ports,
+        system_code
+    </sql>
+    <select id="queryForInsoAssetInventoryList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from inso_asset_inventory
+        where system_code = #{sysCode}
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyColumn="assetId" keyProperty="assetId" parameterType="com.cx.dragonnest.entity.InsoAssetInventory">
+        INSERT INTO inso_asset_inventory
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="null != assetId and '' != assetId">
+                asset_id,
+            </if>
+            <if test="null != firstAttribution and '' != firstAttribution">
+                first_attribution,
+            </if>
+            <if test="null != secondarySecondary and '' != secondarySecondary">
+                secondary_secondary,
+            </if>
+            <if test="null != thirdSecondary and '' != thirdSecondary">
+                third_secondary,
+            </if>
+            <if test="null != applicationSystemName and '' != applicationSystemName">
+                application_system_name,
+            </if>
+            <if test="null != networkUnit and '' != networkUnit">
+                network_unit,
+            </if>
+            <if test="null != ipAddress and '' != ipAddress">
+                ip_address,
+            </if>
+            <if test="null != assetName and '' != assetName">
+                asset_name,
+            </if>
+            <if test="null != ipType and '' != ipType">
+                ip_type,
+            </if>
+            <if test="null != assetStatus and '' != assetStatus">
+                asset_status,
+            </if>
+            <if test="null != networkType and '' != networkType">
+                network_type,
+            </if>
+            <if test="null != deviceType and '' != deviceType">
+                device_type,
+            </if>
+            <if test="null != deviceNotes and '' != deviceNotes">
+                device_notes,
+            </if>
+            <if test="null != ipAccessControl and '' != ipAccessControl">
+                ip_access_control,
+            </if>
+            <if test="null != accessControlNotes and '' != accessControlNotes">
+                access_control_notes,
+            </if>
+            <if test="null != labelName and '' != labelName">
+                label_name,
+            </if>
+            <if test="null != assetNotes and '' != assetNotes">
+                asset_notes,
+            </if>
+            <if test="null != directlyResponsibleDepartment and '' != directlyResponsibleDepartment">
+                directly_responsible_department,
+            </if>
+            <if test="null != directlyResponsible and '' != directlyResponsible">
+                directly_responsible,
+            </if>
+            <if test="null != directlyResponsiblePhone and '' != directlyResponsiblePhone">
+                directly_responsible_phone,
+            </if>
+            <if test="null != directlyResponsibleEmailAddress and '' != directlyResponsibleEmailAddress">
+                directly_responsible_email_address,
+            </if>
+            <if test="null != manageTheDepartment and '' != manageTheDepartment">
+                manage_the_department,
+            </if>
+            <if test="null != headOfManagement and '' != headOfManagement">
+                head_of_management,
+            </if>
+            <if test="null != managePhone and '' != managePhone">
+                manage_phone,
+            </if>
+            <if test="null != manageEmailAddress and '' != manageEmailAddress">
+                manage_email_address,
+            </if>
+            <if test="null != leadDepartmen and '' != leadDepartmen">
+                lead_departmen,
+            </if>
+            <if test="null != headOfLeader and '' != headOfLeader">
+                head_of_leader,
+            </if>
+            <if test="null != leaderPhone and '' != leaderPhone">
+                leader_phone,
+            </if>
+            <if test="null != leaderEmailAddress and '' != leaderEmailAddress">
+                leader_email_address,
+            </if>
+            <if test="null != physicalArea and '' != physicalArea">
+                physical_area,
+            </if>
+            <if test="null != physicalLocation and '' != physicalLocation">
+                physical_location,
+            </if>
+            <if test="null != openPorts and '' != openPorts">
+                open_ports,
+            </if>
+            <if test="null != systemCode and '' != systemCode">
+                system_code
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="null != assetId and '' != assetId">
+                #{assetId},
+            </if>
+            <if test="null != firstAttribution and '' != firstAttribution">
+                #{firstAttribution},
+            </if>
+            <if test="null != secondarySecondary and '' != secondarySecondary">
+                #{secondarySecondary},
+            </if>
+            <if test="null != thirdSecondary and '' != thirdSecondary">
+                #{thirdSecondary},
+            </if>
+            <if test="null != applicationSystemName and '' != applicationSystemName">
+                #{applicationSystemName},
+            </if>
+            <if test="null != networkUnit and '' != networkUnit">
+                #{networkUnit},
+            </if>
+            <if test="null != ipAddress and '' != ipAddress">
+                #{ipAddress},
+            </if>
+            <if test="null != assetName and '' != assetName">
+                #{assetName},
+            </if>
+            <if test="null != ipType and '' != ipType">
+                #{ipType},
+            </if>
+            <if test="null != assetStatus and '' != assetStatus">
+                #{assetStatus},
+            </if>
+            <if test="null != networkType and '' != networkType">
+                #{networkType},
+            </if>
+            <if test="null != deviceType and '' != deviceType">
+                #{deviceType},
+            </if>
+            <if test="null != deviceNotes and '' != deviceNotes">
+                #{deviceNotes},
+            </if>
+            <if test="null != ipAccessControl and '' != ipAccessControl">
+                #{ipAccessControl},
+            </if>
+            <if test="null != accessControlNotes and '' != accessControlNotes">
+                #{accessControlNotes},
+            </if>
+            <if test="null != labelName and '' != labelName">
+                #{labelName},
+            </if>
+            <if test="null != assetNotes and '' != assetNotes">
+                #{assetNotes},
+            </if>
+            <if test="null != directlyResponsibleDepartment and '' != directlyResponsibleDepartment">
+                #{directlyResponsibleDepartment},
+            </if>
+            <if test="null != directlyResponsible and '' != directlyResponsible">
+                #{directlyResponsible},
+            </if>
+            <if test="null != directlyResponsiblePhone and '' != directlyResponsiblePhone">
+                #{directlyResponsiblePhone},
+            </if>
+            <if test="null != directlyResponsibleEmailAddress and '' != directlyResponsibleEmailAddress">
+                #{directlyResponsibleEmailAddress},
+            </if>
+            <if test="null != manageTheDepartment and '' != manageTheDepartment">
+                #{manageTheDepartment},
+            </if>
+            <if test="null != headOfManagement and '' != headOfManagement">
+                #{headOfManagement},
+            </if>
+            <if test="null != managePhone and '' != managePhone">
+                #{managePhone},
+            </if>
+            <if test="null != manageEmailAddress and '' != manageEmailAddress">
+                #{manageEmailAddress},
+            </if>
+            <if test="null != leadDepartmen and '' != leadDepartmen">
+                #{leadDepartmen},
+            </if>
+            <if test="null != headOfLeader and '' != headOfLeader">
+                #{headOfLeader},
+            </if>
+            <if test="null != leaderPhone and '' != leaderPhone">
+                #{leaderPhone},
+            </if>
+            <if test="null != leaderEmailAddress and '' != leaderEmailAddress">
+                #{leaderEmailAddress},
+            </if>
+            <if test="null != physicalArea and '' != physicalArea">
+                #{physicalArea},
+            </if>
+            <if test="null != physicalLocation and '' != physicalLocation">
+                #{physicalLocation},
+            </if>
+            <if test="null != openPorts and '' != openPorts">
+                #{openPorts},
+            </if>
+            <if test="null != systemCode and '' != systemCode">
+                #{systemCode}
+            </if>
+        </trim>
+    </insert>
+
+
+    <update id="updateInsoAssetInventory" parameterType="com.cx.dragonnest.entity.InsoAssetInventory">
+        UPDATE inso_asset_inventory
+        <set>
+            <if test="null != firstAttribution and '' != firstAttribution">first_attribution = #{firstAttribution},</if>
+            <if test="null != secondarySecondary and '' != secondarySecondary">secondary_secondary = #{secondarySecondary},</if>
+            <if test="null != thirdSecondary and '' != thirdSecondary">third_secondary = #{thirdSecondary},</if>
+            <if test="null != applicationSystemName and '' != applicationSystemName">application_system_name = #{applicationSystemName},</if>
+            <if test="null != networkUnit and '' != networkUnit">network_unit = #{networkUnit},</if>
+            <if test="null != ipAddress and '' != ipAddress">ip_address = #{ipAddress},</if>
+            <if test="null != assetName and '' != assetName">asset_name = #{assetName},</if>
+            <if test="null != ipType and '' != ipType">ip_type = #{ipType},</if>
+            <if test="null != assetStatus and '' != assetStatus">asset_status = #{assetStatus},</if>
+            <if test="null != networkType and '' != networkType">network_type = #{networkType},</if>
+            <if test="null != deviceType and '' != deviceType">device_type = #{deviceType},</if>
+            <if test="null != deviceNotes and '' != deviceNotes">device_notes = #{deviceNotes},</if>
+            <if test="null != ipAccessControl and '' != ipAccessControl">ip_access_control = #{ipAccessControl},</if>
+            <if test="null != accessControlNotes and '' != accessControlNotes">access_control_notes = #{accessControlNotes},</if>
+            <if test="null != labelName and '' != labelName">label_name = #{labelName},</if>
+            <if test="null != assetNotes and '' != assetNotes">asset_notes = #{assetNotes},</if>
+            <if test="null != directlyResponsibleDepartment and '' != directlyResponsibleDepartment">directly_responsible_department = #{directlyResponsibleDepartment},</if>
+            <if test="null != directlyResponsible and '' != directlyResponsible">directly_responsible = #{directlyResponsible},</if>
+            <if test="null != directlyResponsiblePhone and '' != directlyResponsiblePhone">directly_responsible_phone = #{directlyResponsiblePhone},</if>
+            <if test="null != directlyResponsibleEmailAddress and '' != directlyResponsibleEmailAddress">directly_responsible_email_address = #{directlyResponsibleEmailAddress},</if>
+            <if test="null != manageTheDepartment and '' != manageTheDepartment">manage_the_department = #{manageTheDepartment},</if>
+            <if test="null != headOfManagement and '' != headOfManagement">head_of_management = #{headOfManagement},</if>
+            <if test="null != managePhone and '' != managePhone">manage_phone = #{managePhone},</if>
+            <if test="null != manageEmailAddress and '' != manageEmailAddress">manage_email_address = #{manageEmailAddress},</if>
+            <if test="null != leadDepartmen and '' != leadDepartmen">lead_departmen = #{leadDepartmen},</if>
+            <if test="null != headOfLeader and '' != headOfLeader">head_of_leader = #{headOfLeader},</if>
+            <if test="null != leaderPhone and '' != leaderPhone">leader_phone = #{leaderPhone},</if>
+            <if test="null != leaderEmailAddress and '' != leaderEmailAddress">leader_email_address = #{leaderEmailAddress},</if>
+            <if test="null != physicalArea and '' != physicalArea">physical_area = #{physicalArea},</if>
+            <if test="null != physicalLocation and '' != physicalLocation">physical_location = #{physicalLocation},</if>
+            <if test="null != openPorts and '' != openPorts">open_ports = #{openPorts},</if>
+            <if test="null != systemCode and '' != systemCode">system_code = #{systemCode}</if>
+        </set>
+        WHERE asset_id = #{assetId}
+    </update>
+
+    <delete id="delete" >
+        DELETE FROM inso_asset_inventory
+        WHERE asset_id in
+        <foreach item="assetId" collection="array" open="(" separator="," close=")">
+            #{assetId}
+        </foreach>
+    </delete>
 
 
 </mapper>

@@ -172,6 +172,15 @@ public class InsoAssetInventory implements Serializable {
 	private String physicalLocation;
 
 	private String systemCode;
+	private String openPorts;
+
+	public String getOpenPorts() {
+		return openPorts;
+	}
+
+	public void setOpenPorts(String openPorts) {
+		this.openPorts = openPorts;
+	}
 
 	public Integer getAssetId() {
 		return assetId;

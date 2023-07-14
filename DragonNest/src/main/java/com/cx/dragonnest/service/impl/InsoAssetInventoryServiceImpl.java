@@ -21,4 +21,14 @@ public class InsoAssetInventoryServiceImpl implements InsoAssetInventoryService 
 		lambdaQueryWrapper.eq(InsoAssetInventory::getSystemCode,sysCode);
 		return insoAssetInventoryMapper.selectOne(lambdaQueryWrapper);
 	}
+
+	@Override
+	public int updateInsoAssetInventory(InsoAssetInventory insoAssetInventory) {
+		return insoAssetInventoryMapper.updateInsoAssetInventory(insoAssetInventory);
+	}
+
+	@Override
+	public int deleteInsoDocInfoByDocIds(int[] assetId) {
+		return insoAssetInventoryMapper.delete(assetId);
+	}
 }

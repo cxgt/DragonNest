@@ -52,6 +52,12 @@ public class DragonNestTest {
 	void testService(){
 		InsoAssetInventory insoAssetInventory = insoAssetInventoryService.selectOneAsset("3");
 		System.out.println(JSONObject.toJSONString(insoAssetInventory));
+		insoAssetInventory.setSystemCode("4");
+		insoAssetInventoryService.updateInsoAssetInventory(insoAssetInventory);
+		System.out.println();
+		insoAssetInventoryService.deleteInsoDocInfoByDocIds(new int[]{1});
+		InsoAssetInventory insoAssetInventory2 = insoAssetInventoryService.selectOneAsset("4");
+		System.out.println(JSONObject.toJSONString(insoAssetInventory2));
 	}
 //	@Test
 //		//添加数据

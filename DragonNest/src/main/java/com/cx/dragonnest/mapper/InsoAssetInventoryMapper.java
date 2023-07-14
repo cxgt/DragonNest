@@ -7,4 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface InsoAssetInventoryMapper extends BaseMapper<InsoAssetInventory> {
+	int updateInsoAssetInventory(InsoAssetInventory insoAssetInventory);
+
+	int delete(int[] assetId);
 }

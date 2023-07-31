@@ -1,13 +1,18 @@
 package com.cx.dragonnest;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.alibaba.fastjson2.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.cx.dragonnest.entity.InfoNbrUser;
-import com.cx.dragonnest.entity.InsoAssetInventory;
-import com.cx.dragonnest.entity.InsoSysManage;
+import com.cx.dragonnest.entity.*;
+import com.cx.dragonnest.entity.WorkReminders.*;
 import com.cx.dragonnest.service.InfoNbrUserService;
 import com.cx.dragonnest.service.InsoAssetInventoryService;
 import com.cx.dragonnest.service.InsoSysManageService;
+import com.cx.dragonnest.service.WorkRemindersService;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import liquibase.pro.packaged.O;
+import liquibase.pro.packaged.S;
 import org.flowable.engine.*;
 import org.flowable.engine.history.HistoricActivityInstance;
 import org.flowable.engine.impl.cfg.StandaloneProcessEngineConfiguration;
@@ -21,10 +26,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author chenxin
@@ -41,13 +44,39 @@ public class DragonNestTest {
 
 	@Autowired(required = false)
 	private InsoAssetInventoryService insoAssetInventoryService;
+
+	@Autowired
+	private ObjectMapper objectMapper;
+	@Autowired
+	private WorkRemindersService workRemindersService;
 //
 	@Test
 	void tryLog(){
-		InsoSysManage insoSysManage = insoSysManageService.queryForInsoSysManage();
-		System.out.println(JSONObject.toJSONString(insoSysManage));
+		int[] ints = twoSum(new int[]{3,2,4}, 6);
+		System.out.println(ints.toString());
+//		testForEntities.stream().collect(Collectors.toMap())
 	}
-
+	public int[] twoSum(int[] nums, int target) {
+		List<Integer> collect = Arrays.stream(nums).boxed().collect(Collectors.toList());
+		for (Integer integer : collect) {
+			int targetNum = target-integer;
+			if(collect.contains(targetNum) && targetNum != integer){
+				return new int[]{collect.indexOf(integer),collect.indexOf(targetNum)};
+			}
+		}
+		return null;
+	}
+	private <T> Map<String, Object>   switchToMap(T addNoticeReq) {
+		Map<String, Object> reqMap =new HashMap<>();
+		if(addNoticeReq.getClass().isInstance(CustomizationNotice.class)){
+			Map<String, Object> stringObjectMap = objectMapper.convertValue(addNoticeReq, Map.class);
+			return stringObjectMap;
+		}else {
+			Map<String, Object> stringObjectMap = objectMapper.convertValue(addNoticeReq, Map.class);
+			reqMap.put("uniBssBody", stringObjectMap);
+			return reqMap;
+		}
+	}
 	@Test
 	void testService(){
 		InsoAssetInventory insoAssetInventory = insoAssetInventoryService.selectOneAsset("3");

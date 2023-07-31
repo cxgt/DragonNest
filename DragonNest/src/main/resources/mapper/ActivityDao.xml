@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cx.dragonnest.mapper.ActivityDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.cx.dragonnest.entity.ActivityEntity" id="activityMap">
+        <result property="opptyActivityId" column="OPPTY_ACTIVITY_ID"/>
+        <result property="opptyId" column="OPPTY_ID"/>
+        <result property="activityName" column="ACTIVITY_NAME"/>
+        <result property="activityContent" column="ACTIVITY_CONTENT"/>
+        <result property="activityState" column="ACTIVITY_STATE"/>
+        <result property="followType" column="FOLLOW_TYPE"/>
+        <result property="createBy" column="CREATE_BY"/>
+        <result property="createDate" column="CREATE_DATE"/>
+        <result property="tenantId" column="TENANT_ID"/>
+    </resultMap>
+
+    <insert id="insertData" parameterType="com.cx.dragonnest.entity.ActivityEntity">
+        INSERT INTO t_busi_oppty_activity
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="null != opptyActivityId and '' != opptyActivityId">
+                oppty_activity_id,
+            </if>
+            <if test="null != opptyId and '' != opptyId">
+                oppty_id,
+            </if>
+            <if test="null != activityName and '' != activityName">
+                activity_name,
+            </if>
+            <if test="null != activityContent and '' != activityContent">
+                activity_content,
+            </if>
+            <if test="null != activityState and '' != activityState">
+                activity_state,
+            </if>
+            <if test="null != followType and '' != followType">
+                follow_type,
+            </if>
+            <if test="null != createBy and '' != createBy">
+                create_by,
+            </if>
+            <if test="null != createDate ">
+                create_date,
+            </if>
+            <if test="null != tenantId and '' != tenantId">
+                tenant_id
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="null != opptyActivityId and '' != opptyActivityId">
+                #{opptyActivityId},
+            </if>
+            <if test="null != opptyId and '' != opptyId">
+                #{opptyId},
+            </if>
+            <if test="null != activityName and '' != activityName">
+                #{activityName},
+            </if>
+            <if test="null != activityContent and '' != activityContent">
+                #{activityContent},
+            </if>
+            <if test="null != activityState and '' != activityState">
+                #{activityState},
+            </if>
+            <if test="null != followType and '' != followType">
+                #{followType},
+            </if>
+            <if test="null != createBy and '' != createBy">
+                #{createBy},
+            </if>
+            <if test="null != createDate ">
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="null != tenantId and '' != tenantId">
+                #{tenantId}
+            </if>
+        </trim>
+    </insert>
+</mapper>

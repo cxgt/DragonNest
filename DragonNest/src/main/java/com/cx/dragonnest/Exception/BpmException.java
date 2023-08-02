@@ -1,4 +1,4 @@
-package com.asiainfo.cuc.bpm.common.execption;
+package com.cx.dragonnest.Exception;
 
 import com.cx.dragonnest.entity.EntityError;
 import lombok.Builder;

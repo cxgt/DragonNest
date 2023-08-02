@@ -13,7 +13,7 @@ import java.util.Map;
  * @date 2023/07/18 15:34
  */
 @FeignClient(name = ServiceNameConstants.BMC_OPPORTUNITY_SERVICE,
-		path = "${com.asiainfo.bss.console.path:bss-console}",
+		path = "${com.bss.console.path:bss-console}",
 		contextId = "WorkRemindersFeginService")
 public interface WorkRemindersFeginService {
 	@ApiOperation(value = "一般工作提醒", notes = "一般工作提醒")

@@ -9,11 +9,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 商机活动信息表
- *
- * @author sunbing
- * @email sunbing@asiainfo.com
- * @date 2023-07-16 10:38:27
  */
 @Data
 @TableName("t_busi_oppty_activity")

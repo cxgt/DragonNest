@@ -19,6 +19,8 @@
     <description>DragonNest</description>
     <properties>
         <java.version>8</java.version>
+        <!--com.fasterxml.jackson 版本-->
+        <jackson.version>2.9.10</jackson.version>
     </properties>
     <dependencies>
         <dependency>
@@ -183,6 +185,32 @@
             <groupId>com.github.penggle</groupId>
             <artifactId>kaptcha</artifactId>
             <version>2.3.2</version>
+        </dependency>
+        <!--redis依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <version>2.5.2</version>
+        </dependency>
+
+        <!--用于序列化-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <!--java 8时间序列化-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>2.5.2</version>
         </dependency>
     </dependencies>
 
